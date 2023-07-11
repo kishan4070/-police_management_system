@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>complete responsive travel website design tutorial</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- custom js file link  -->
+    <script src="js/script.js" defer></script>
+    <!--navbar css-->
+    <script src="https://kit.fontawesome.com/d40481c340.js" crossorigin="anonymous"></script>
+    <!--navbar css-->
+        <script>
+            function logId(){
+            var form = document.loginform;
+
+            var mailreg = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            var mail = form.user_email.value;
+            if(mailreg.test(mail) == false){
+                alert("Please Enter user email"); 
+                //$("#user_email").removeClass("greenclass").addClass("redclass");
+                return false;
+            }
+            else{
+                //$("#user_email").removeClass("redclass").addClass("greenclass");
+            }
+            
+            if(form.user_password.value == ""){
+                alert("Please Enter Password");
+                //$("#user_password").removeClass("greenclass").addClass("redclass");
+                return false;
+            }
+            else{
+                //$("#user_password").removeClass("redclass").addClass("greenclass");
+            };
+        }
+
+
+        function regId(){
+            var form = document.registrationform;
+
+            if(form.user_name.value == ""){
+                alert("Please Enter User name");
+                //$("#user_name").removeClass("greenclass").addClass("redclass");
+                return false;
+            }
+            else{
+                //$("#user_name").removeClass("redclass").addClass("greenclass");
+            }
+            var mailreg = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            var mail = form.user_email.value;
+            if(mailreg.test(mail) == false){
+                alert("Enter correct Email Id");
+                //$("#user_email").removeClass("greenclass").addClass("redclass");
+                return false;
+            }
+            
+            else{
+                //$("#user_email").removeClass("redclass").addClass("greenclass");
+            }
+
+            if(form.user_gender.value == ""){
+                alert("Select Gender");
+                //$("#user_gender").removeClass("greenclass").addClass("redclass");
+                return false;
+            }
+            
+            else{
+                //$("#user_gender").removeClass("redclass").addClass("greenclass");
+            }
+
+            if(form.user_address.value == ""){
+                alert("Enter address");
+                //$("#user_address").removeClass("greenclass").addClass("redclass");
+                return false;
+            }
+            
+            else{
+                //$("#user_address").removeClass("redclass").addClass("greenclass");
+            }
+
+            if(form.user_phone_no.value == ""){
+                alert("Enter Phone No");
+                //$("#user_phone_no").removeClass("greenclass").addClass("redclass");
+                return false;
+            }
+            
+            else{
+                //$("#user_phone_no").removeClass("redclass").addClass("greenclass");
+            }
+
+            if((form.user_password.value == "")&&(form.repassword.value == "")){
+                alert("Enter Password");
+                //$("#user_password").removeClass("greenclass").addClass("redclass");
+                //$("#repassword").removeClass("greenclass").addClass("redclass");
+                return false;
+            }
+            
+            else{
+                //$("#user_password").removeClass("redclass").addClass("greenclass");
+                //$("#repassword").removeClass("redclass").addClass("greenclass");
+            
+            }
+
+            if((form.user_name.value == "")||
+            ((form.user_password.value == "")&&(form.repassword.value == ""))||
+            (form.user_password.value != form.repassword.value)){
+                alert("Enter correct Password");
+                //$("#user_password").removeClass("greenclass").addClass("redclass");
+                //$("#repassword").removeClass("greenclass").addClass("redclass");
+                return false;
+                
+            }
+            
+            else{
+                //$("#user_password").removeClass("redclass").addClass("greenclass");
+                //$("#repassword").removeClass("redclass").addClass("greenclass");    
+                $("#registrationform").hide(1000);
+                $("#loginform").show(1000);    
+            }
+
+        }
+
+        function checkEmailAvailability() {
+  
+        jQuery.ajax({
+            url: "check_availability.php",
+            data:'user_email='+$("#user_email").val(),
+            type: "POST",
+            success:function(data){
+            $("#email-availability-status").html(data);
+            },
+            error:function (){
+            event.preventDefault();
+            }
+        });
+        }
+
+        function contact(){
+            var form = document.contactform;
+            if(form.contact_name.value == ""){
+                alert("Enter Your Name");
+                return false;
+            }
+            if(form.contact_no.value == ""){
+                alert("Enter Contact #");
+                return false;
+            }
+        }
+        </script>
+        <script>
+
+        $(document).ready(function(){
+            $("#registrationform").hide();
+            $("#frm").click(function(){
+                $("#loginform").hide(1000,function(){
+                    $("#registrationform").show(1000);    
+                });
+
+            });
+            $("#frm1").click(function(){
+                $("#loginform").hide(1000,function(){
+                    $("#registrationform").show(1000);    
+                });
+
+            });
+
+            $("#frm2").click(function(){
+                $("#registrationform").hide(1000,function(){
+                    $("#loginform").show(1000);    
+                });
+            });
+            $("#frm3").click(function(){
+                $("#registrationform").hide(1000,function(){
+                    $("#loginform").show(1000);    
+                });
+            });
+            })
+        </script>
+</head>
+<body>
+    
+<!-- header section starts  -->
+
+<header class="header">
+
+    <div id="menu-btn" class="fas fa-bars"></div>
+
+    <a data-aos="zoom-in-left" data-aos-delay="150" href="index.html" class="logo"> <i class="fa-solid fa-handcuffs"></i>POLICE </a>
+
+    <nav class="navbar">
+        <a data-aos="zoom-in-left" data-aos-delay="300" href="index.html">HOME</a>
+        <a data-aos="zoom-in-left" data-aos-delay="600" href="#loginform">USER</a>
+        <a data-aos="zoom-in-left" data-aos-delay="750" href="officer.php">OFFICER</a>
+        <a data-aos="zoom-in-left" data-aos-delay="900" href="Adminlogin.html">ADMIN</a>
+    </nav>
+
+    <a data-aos="zoom-in-left" data-aos-delay="1300" href="#SignUp" id="frm" class="btn">Sign Up</a>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+
+    <div class="content">
+        <span data-aos="fade-up" data-aos-delay="150">M K U</span>
+        <h3 data-aos="fade-up" data-aos-delay="300">POLICE STATION</h3>
+        <a data-aos="fade-up" data-aos-delay="600" id="frm3" href="#book-form" class="btn">LOG-IN</a>
+    </div>
+
+</section>
+
+<!-- home section ends -->
+
+<!-- login form section starts  -->
+
+<section class="book-form" id="book-form">
+
+    <form id="loginform" name="loginform"  method="post" action="USER_FORMS.php">
+        <div data-aos="zoom-in" data-aos-delay="150" class="inputBox">
+            <span>User Log-In</span>
+            <input type="text" name="user_email" id="user_email" placeholder="enter user email">
+            <input data-aos="zoom-in" data-aos-delay="600" type="submit" name="btn_login" class="btn" onclick="return logId()">
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="300" class="inputBox">
+            <input type="password" placeholder="user_password" name="user_password" id="user_password">
+            <input data-aos="zoom-in" data-aos-delay="600" type="reset" name="reset" class="btn">
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="450" class="inputBox">
+            <span style="color:white;">NOT Registered ?</span>
+            <input type="button" data-aos-delay="600" value="Register" id="frm1" class="btn">
+        </div>
+    </form>
+    <!--Login Form section End-->
+
+
+    <!--Registration Form Start-->
+    <form name="registrationform" id="registrationform"  method="post"  action="registration.php" onsubmit="return regId()"  enctype="multipart/form-data">
+        <div data-aos="zoom-in" data-aos-delay="150" class="inputBox">
+            <span>user Registration</span>
+            <div class="radio">
+                <input type="text" name="user_name" id="user_name" placeholder="username">
+                <input type="password" name="user_password" id="user_password" placeholder="password">
+                <input type="password" name="repassword" id="repassword" placeholder="re-password">
+            </div>
+            <input type="submit" id="submit" name="btn_register" class="btn">
+            
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="300" class="inputBox">
+            <div class="radio">
+                <input type="text" name="user_email" id="user_email" placeholder="Email" onBlur="checkEmailAvailability();">
+                <span id="email-availability-status" style="font-size:12px;"></span>
+                <input type="file" name="file">
+                <input type="text" name="user_phone_no" id="user_phone_no" placeholder="Phone #">
+            </div>
+            <input type="reset" name="reset" class="btn">
+            
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="450" class="inputBox">
+            <div class="radio">
+                <table>
+                    <tr>
+                        <td>Gender</td>
+                    </tr>
+                    <tr>
+                        <td><input type="radio" name="user_gender" id="user_gender" value="0"></td><td>Male &nbsp;&nbsp;</td>
+                        <td><input type="radio" name="user_gender" id="user_gender" value="1"></td><td>&nbsp;&nbsp;Female</td>
+                    </tr>
+                </table>
+                <input type="text" name="user_address" id="user_address" placeholder="Address">
+                <input type="date" name="user_dob" id="user_dob">
+            </div>
+            <span></span>
+            <input type="button" data-aos-delay="600" value="Already Registered ? Log-In" id="frm2" class="btn">
+
+              </div>
+    </form>
+
+</section>
+
+<!-- login form section ends -->
+
+<!-- about section starts  -->
+
+<section class="about" id="about">
+
+    <div class="video-container" data-aos="fade-right" data-aos-delay="300">
+        <video src="images/about-vid-1.mp4" muted autoplay loop class="video"></video>
+        <div class="controls">
+            <span class="control-btn" data-src="images/about-vid-1.mp4"></span>
+            <span class="control-btn" data-src="images/about-vid-2.mp4"></span>
+            <span class="control-btn" data-src="images/about-vid-3.mp4"></span>
+        </div>
+    </div>
+
+    <div class="content" data-aos="fade-left" data-aos-delay="600">
+        <span>Why use.?</span>
+        <h3>our work for you!</h3>
+        <p>Our respective officer give their best to complete all mission to give satisfaction to our citizens. You want to read more?</p>
+        <a href="#" class="btn">read more</a>
+    </div>
+
+</section>
+
+<!-- about section ends -->
+
+<!-- destination section starts  -->
+
+<section class="destination" id="destination">
+
+    <div class="heading">
+        <span>our Staff</span>
+        <h1>For Yours Knowledge</h1>
+    </div>
+
+    <div class="box-container">
+
+        <div class="box" data-aos="fade-up" data-aos-delay="150">
+            <div class="image">
+                <img src="images/des-1.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3>Director General of Police</h3>
+                <p>They are responsible for administration of all the Police departments in the State. Their main role is to supervise and check and ensure that the department is properly functioning and has disciplinary authority.</p>
+                <a href="#">read more <i class="fas fa-angle-right"></i></a>
+            </div>
+        </div>
+
+        <div class="box" data-aos="fade-up" data-aos-delay="300">
+            <div class="image">
+                <img src="images/des-2.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3>Inspector General of Police</h3>
+                <p>The IG looks after the overall administrative, financial and other duties of the Police force. They are only appointed from among the IPS officers. They exercise command over the Police Force and they also perform other functions delegated to them by the legislation.</p>
+                <a href="#">read more <i class="fas fa-angle-right"></i></a>
+            </div>
+        </div>
+
+        <div class="box" data-aos="fade-up" data-aos-delay="450">
+            <div class="image">
+                <img src="images/des-3.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3>Deputy Inspector General</h3>
+                <p>They are ranked above the Superintendent of Police. The DIG helps the IG in supervising and overseeing the various police stations under their jurisdiction.</p>
+                <a href="#">read more <i class="fas fa-angle-right"></i></a>
+            </div>
+        </div>
+
+        <div class="box" data-aos="fade-up" data-aos-delay="600">
+            <div class="image">
+                <img src="images/des-4.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3>Deputy Commissioner of Police</h3>
+                <p>As a DCP, one has to enforce policies and activities given by the central government or state government. They have the power to inspect and monitor the work done by other junior officials. They also act as an appellate authority in revenue.</p>
+                <a href="#">read more <i class="fas fa-angle-right"></i></a>
+            </div>
+        </div>
+
+        <div class="box" data-aos="fade-up" data-aos-delay="750">
+            <div class="image">
+                <img src="images/des-5.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3>Deputy Superintendent of police</h3>
+                <p>They are incharge of executing all duties and maintain law and order or any other duties as assigned by the Superintendent of Police. They also supervise the work of their juniors. They also look after all the cases registered by the other police station within their jurisdiction.</p>
+                <a href="#">read more <i class="fas fa-angle-right"></i></a>
+            </div>
+        </div>
+
+        <div class="box" data-aos="fade-up" data-aos-delay="900">
+            <div class="image">
+                <img src="images/des-6.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3>Police Inspector</h3>
+                <p>The job of an Inspector is to supervise the investigation under his jurisdiction. They also train junior investigating officers investigating the case under their jurisdiction. They also supervise all official works including maintenance of records and report it to senior Police officers.</p>
+                <a href="#">read more <i class="fas fa-angle-right"></i></a>
+            </div>
+        </div>
+
+        <div class="box" data-aos="fade-up" data-aos-delay="1150">
+            <div class="image">
+                <img src="images/des-7.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3>Sub Inspector</h3>
+                <p>They ensure the effective working of the management or staff subordinate to them. Their main agenda is to maintain peace and prevention and detection of crimes. They also maintain a register in the Police station.</p>
+                <a href="#">read more <i class="fas fa-angle-right"></i></a>
+            </div>
+        </div>
+
+        <div class="box" data-aos="fade-up" data-aos-delay="1300">
+            <div class="image">
+                <img src="images/des-8.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3>Assistant Sub Inspector</h3>
+                <p>They are usually in charge of armories. They are also a part of border patrolling with BSF. They make reports of incidents and report it to other senior officers.</p>
+                <a href="#">read more <i class="fas fa-angle-right"></i></a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- destination section ends -->
+
+<!-- services section starts  -->
+
+<section class="services" id="services">
+
+    <div class="heading">
+        <span>our services</span>
+        <h1>Preserving the peace of every citizen!</h1>
+    </div>
+
+    <div class="box-container">
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="150">
+            <i class="fas fa-globe"></i>
+            <h3>worldwide</h3>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="300">
+            <i class="fa-solid fa-gavel"></i>
+            <h3>Crime Tips</h3>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="450">
+            <i class="fa-solid fa-gun"></i>
+            <h3>Firearms Licensing</h3>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="600">
+            <i class="fas fa-hotel"></i>
+            <h3>Property Disposal</h3>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="750">
+            <i class="fa-solid fa-car"></i>
+            <h3>Vehicle Unlocks</h3>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="900">
+            <i class="fas fa-headset"></i>
+            <h3>24/7 support</h3>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- services section ends -->
+
+<!-- gallery section starts  -->
+
+<section class="gallery" id="gallery">
+
+    <div class="heading">
+        <span>our gallery</span>
+        <h1>we record memories</h1>
+    </div>
+    
+    <div class="box-container">
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="150">
+            <img src="images/gallery-img-1.webp" alt="">
+            <span>Officer Betch</span>
+            <h3>POLICE</h3>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="300">
+            <img src="images/gallery-img-2.webp" alt="">
+            <span>Police Car</span>
+            <h3>Hit Car</h3>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="450">
+            <img src="images/gallery-img-3.jpg" alt="">
+            <span>Camando</span>
+            <h3>Special Force</h3>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="150">
+            <img src="images/gallery-img-4.jpg" alt="">
+            <span>SCAR-L</span>
+            <h3>Weapon</h3>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="300">
+            <img src="images/gallery-img-5.jpg" alt="">
+            <span>travel spot</span>
+            <h3>brazil</h3>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="450">
+            <img src="images/gallery-img-6.jpg" alt="">
+            <span>Defance Kit</span>
+            <h3>Accesories</h3>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="150">
+            <img src="images/gallery-img-7.jpg" alt="">
+            <span>Defance Army</span>
+            <h3>Army</h3>
+        </div>  
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="300">
+            <img src="images/gallery-img-8.webp" alt="">
+            <span>Black Camando</span>
+            <h3>Special Force</h3>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="450">
+            <img src="images/gallery-img-9.jpeg" alt="">
+            <span>Police car</span>
+            <h3>RED & Blue</h3>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- gallery section ends -->
+
+<!-- review section starts  -->
+
+<section class="review">
+
+    <div class="content" data-aos="fade-right" data-aos-delay="300">
+        <span>Creator & Testimonial</span>
+        <h3>Testimonial:- Sarfaraj Patel</h3>
+        <p>Web Creator:- <br> Team Leader - Manav Meghani 
+                     <br> Group Member - Kishan Mandaliya & Urvish sonani
+                    </p>
+    </div>
+
+    <div class="box-container" data-aos="fade-left" data-aos-delay="600">
+
+        <div class="box">
+            <p>Professor of L J University.</p>
+            <div class="user">
+                <img src="images/pic-1.png" alt="">
+                <div class="info">
+                    <h3>Sarfaraj Patel</h3>
+                    <span>Testimonial</span>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <p>MSC-IT Semester-3 Student</p>
+            <div class="user">
+                <img src="images/pic-2.jpg" alt="">
+                <div class="info">
+                    <h3>Manav Meghani</h3>
+                    <span>Team Leader</span>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <p>MSC-IT Semester-3 Student</p>
+            <div class="user">
+                <img src="images/pic-3.jpg" alt="">
+                <div class="info">
+                    <h3>Kishan Mandaliya</h3>
+                    <span>Team Member</span>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <p>MSC-IT Semester-3 Student</p>
+            <div class="user">
+                <img src="images/pic-4.jpg" alt="">
+                <div class="info">
+                    <h3>Urvish Sonani</h3>
+                    <span>Team Member</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- review section ends -->
+
+<!-- blogs section starts  -->
+
+<section class="blogs" id="blogs">
+
+    <div class="heading">
+        <span>posts</span>
+        <h1>Our Latest News</h1>
+    </div>
+
+    <div class="box-container">
+
+        <div class="box" data-aos="fade-up" data-aos-delay="150">
+            <div class="image">
+                <img src="images/blog-1.jpg" alt="">
+            </div>
+            <div class="content">
+                <a href="#" class="link">Court Permits New York Police to Use ‘Neither Confirm nor Deny’ Tactic</a>
+                <p></p>
+                <div class="icon">
+                    <a href="#"><i class="fas fa-clock"></i> February 15, 2018</a>
+                    <a href="#"><i class="fas fa-user"></i> by admin</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="box" data-aos="fade-up" data-aos-delay="300">
+            <div class="image">
+                <img src="images/blog-2.jpg" alt="">
+            </div>
+            <div class="content">
+                <a href="#" class="link">Why Law Enforcement Needs an Incident Action Plan for Every Event</a>
+                <p></p>
+                <div class="icon">
+                    <a href="#"><i class="fas fa-clock"></i> February 15, 2018</a>
+                    <a href="#"><i class="fas fa-user"></i> by admin</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="box" data-aos="fade-up" data-aos-delay="450">
+            <div class="image">
+                <img src="images/blog-3.jpg" alt="">
+            </div>
+            <div class="content">
+                <a href="#" class="link">New York Detective Guilty of Lying About Drug Arrest​​​​​​​</a>
+                <p></p>
+                <div class="icon">
+                    <a href="#"><i class="fas fa-clock"></i> February 15, 2018</a>
+                    <a href="#"><i class="fas fa-user"></i> by admin</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- blogs section ends -->
+
+<!-- banner section starts  -->
+
+<div class="banner">
+
+    <div class="content" data-aos="zoom-in-up" data-aos-delay="300">
+        <span>Contact Us.</span>
+        <h3>Fill this form & we are replay back as soon as possible.</h3>
+        <form name="contactform" id="contactform"  method="post"  action="contact_handler.php" onsubmit="return contact()">
+            <br><h2 style="color:rgb(87, 199, 227)">NAME:</h2><p><input type="text" class="name03" name="contact_name" id="contact_name" placeholder="Enter your Name"></p>
+            <h2 style="color:rgb(87, 199, 227);">PHONE #:</h2> <p><input type="text" class="name03" name="contact_no" id="contact_no" placeholder="Enter your Contact #"></p>
+            <h2 style="color:rgb(87, 199, 227);">Feedback & Complaint:</h2> <p><textarea type="text" class="name03" name="issue" id="issue" placeholder="Enter your feedback OR complaint." style="width: 250px;"></textarea></p>
+        <input type="submit" id="submit" name="btn_contact" class="btn">
+        </form>
+    </div>
+
+</div>
+
+<!-- banner section ends -->
+
+<!-- footer section starts  -->
+
+<section class="footer" style="color: white;">
+
+    <div class="box-container">
+
+        <div class="box" >
+            <a href="#" class="logo"> <i class="fa-solid fa-handcuffs"></i>POLICE </a>
+            <p>This Web Is Use For Study Purpose. Contact Us!</p>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+            </div>
+        </div>
+
+        <div class="box" >
+            <h3>quick links</h3>
+            <a href="#home" class="links"> <i class="fas fa-arrow-right"></i> home </a>
+            <a href="#about" class="links"> <i class="fas fa-arrow-right"></i> about </a>
+            <a href="#destination" class="links"> <i class="fas fa-arrow-right"></i> staff </a>
+            <a href="#services" class="links"> <i class="fas fa-arrow-right"></i> services </a>
+            <a href="#gallery" class="links"> <i class="fas fa-arrow-right"></i> gallery </a>
+            <a href="#blogs" class="links"> <i class="fas fa-arrow-right"></i> news </a>
+        </div>
+
+        <div class="box">
+            <h3>contact info</h3>
+            <p> <i class="fas fa-map"></i> ahmedabad, india </p>
+            <a href="tel:+918140801537"><p> <i class="fas fa-phone"></i> +91 81408 01537 </p></a>
+            <a href="mailto:manavmeghani15@gmail.com"><p> <i class="fas fa-envelope"></i> manavmeghani15@gmail.com </p></a>
+            <p> <i class="fas fa-clock"></i> 7:00am - 09:00pm </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- footer section ends -->
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+<script>
+
+    AOS.init({
+        duration: 800,
+        offset:150,
+    });
+
+</script>
+
+</body>
+</html>

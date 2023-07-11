@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>complete responsive travel website design tutorial</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- custom js file link  -->
+    <script src="js/script.js" defer></script>
+    <!--navbar css-->
+    <script src="https://kit.fontawesome.com/d40481c340.js" crossorigin="anonymous"></script>
+    <!--navbar css-->
+    <script>
+        function logId(){
+            var form = document.Adminloginform;
+            
+            if(form.admin_name.value == ""){
+                alert("Please Enter Admin Name");
+                return false;
+            }
+            if(form.admin_password.value == ""){
+                alert("Enter Password");
+                return false;
+            }
+        }
+        function regId(){
+            var form = document.Adminregistrationform;
+            
+            if(form.admin_name.value == ""){
+                alert("Please Enter Admin Name");
+                return false;
+            }
+            if((form.admin_password.value == "")&&(form.repassword.value == "")){
+                alert("Enter Password");
+                return false;
+            }
+            if((form.admin_name.value == "")||
+            ((form.admin_password.value == "")&&(form.repassword.value == ""))||
+            (form.admin_password.value != form.repassword.value)){
+                alert("Enter correct Password");
+                return false;   
+            }
+            else{
+                $("#registrationform").hide(1000);
+                $("#loginform").show(1000);    
+            }
+        }
+    </script>
+    
+    <script>
+
+        $(document).ready(function(){
+            $("#Adminregistrationform").hide();
+            $("#frm").click(function(){
+                $("#Adminloginform").hide(1000,function(){
+                    $("#Adminregistrationform").show(1000);    
+                });
+
+            });
+            $("#frm1").click(function(){
+                $("#Adminloginform").hide(1000,function(){
+                    $("#Adminregistrationform").show(1000);    
+                });
+
+            });
+
+            $("#frm2").click(function(){
+                $("#Adminregistrationform").hide(1000,function(){
+                    $("#Adminloginform").show(1000);    
+                });
+            });
+            $("#frm3").click(function(){
+                $("#Adminregistrationform").hide(1000,function(){
+                    $("#Adminloginform").show(1000);    
+                });
+            });
+            })
+        </script>
+</head>
+<body>
+    
+<!-- header section starts  -->
+
+<header class="header">
+
+    <div id="menu-btn" class="fas fa-bars"></div>
+
+    <a data-aos="zoom-in-left" data-aos-delay="150" href="index.html" class="logo"> <i class="fa-solid fa-handcuffs"></i>POLICE </a>
+
+    <nav class="navbar">
+        <a data-aos="zoom-in-left" data-aos-delay="300" href="index.html">home</a>
+        <a data-aos="zoom-in-left" data-aos-delay="600" href="index.html">USER</a>
+        <a data-aos="zoom-in-left" data-aos-delay="750" href="officer.php">OFFICER</a>
+        <a data-aos="zoom-in-left" data-aos-delay="900" href="Adminlogin.html">ADMIN</a>
+    </nav>
+
+    <a data-aos="zoom-in-left" data-aos-delay="1300" href="#SignUp" id="frm1" class="btn">Admin Sign Up</a>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+
+    <div class="content">
+        <span data-aos="fade-up" data-aos-delay="150">ADMIN</span>
+        <h3 data-aos="fade-up" data-aos-delay="300">POLICE STATION</h3>
+        <a data-aos="fade-up" data-aos-delay="600" id="frm3" href="#book-form" class="btn">LOG-IN</a>
+    </div>
+
+</section>
+
+<!-- home section ends -->
+
+<!-- login form section starts  -->
+
+<section class="book-form" id="book-form">
+
+    <form id="Adminloginform" name="Adminloginform"  method="post" action="admin-registration.php">
+        <div data-aos="zoom-in" data-aos-delay="150" class="inputBox">
+            <span>Admin Log-In</span>
+            <input type="text" name="admin_name" id="admin_name" placeholder="Enter Admin Name">
+            <input data-aos="zoom-in" data-aos-delay="600" type="submit" name="admin_log" class="btn" onclick="return logId()">
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="300" class="inputBox">
+            <input type="password" placeholder="Enter Admin Password" name="admin_password" id="admin_password">
+            <input data-aos="zoom-in" data-aos-delay="600" type="reset" name="reset" class="btn">
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="450" class="inputBox">
+            <span>NOT Registered ?</span>
+            <input type="button" data-aos-delay="600" value="Register" id="frm" class="btn">
+        </div>
+    </form>
+    <!--Login Form section End-->
+
+
+    <!--Registration Form Start-->
+    <form  name="Adminregistrationform" id="Adminregistrationform"  method="post"  action="admin-registration.php" onsubmit="return regId()">
+        <div data-aos="zoom-in" data-aos-delay="150" class="inputBox">
+            <span>Admin Registration</span>
+            <input type="text" name="admin_name" id="admin_name" placeholder="Admin Name">
+            <input type="submit" id="submit" name="admin_reg" class="btn">
+            
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="300" class="inputBox">
+            <input type="password" name="admin_password" id="admin_password" placeholder="Password">
+            <input type="reset" name="reset" class="btn">
+            
+        </div>
+        <div data-aos="zoom-in" data-aos-delay="450" class="inputBox">
+            <input type="password" name="repassword" id="repassword" placeholder="Re-Password">
+            <input type="button" data-aos-delay="600" value="Already Registered ? Log-In" id="frm2" class="btn">
+        </div>
+    </form>
+
+</section>
+
+<!-- booking form section ends -->
+
+<!-- footer section starts  -->
+
+<section class="footer" style="color: white;">
+
+    <div class="box-container">
+
+        <div class="box" >
+            <a href="#" class="logo"> <i class="fa-solid fa-handcuffs"></i>POLICE </a>
+            <p>This Web Is Use For Study Purpose. Contact Us!</p>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+            </div>
+        </div>
+
+        <div class="box" >
+            <!-- <h3>quick links</h3>
+            <a href="#home" class="links"> <i class="fas fa-arrow-right"></i> home </a>
+            <a href="#about" class="links"> <i class="fas fa-arrow-right"></i> about </a>
+            <a href="#destination" class="links"> <i class="fas fa-arrow-right"></i> staff </a>
+            <a href="#services" class="links"> <i class="fas fa-arrow-right"></i> services </a>
+            <a href="#gallery" class="links"> <i class="fas fa-arrow-right"></i> gallery </a>
+            <a href="#blogs" class="links"> <i class="fas fa-arrow-right"></i> news </a> -->
+        </div>
+
+        <div class="box">
+            <h3>contact info</h3>
+            <p> <i class="fas fa-map"></i> ahmedabad, india </p>
+            <a href="tel:+918140801537"><p> <i class="fas fa-phone"></i> +91 81408 01537 </p></a>
+            <a href="mailto:manavmeghani15@gmail.com"><p> <i class="fas fa-envelope"></i> manavmeghani15@gmail.com </p></a>
+            <p> <i class="fas fa-clock"></i> 7:00am - 09:00pm </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- footer section ends -->
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+<script>
+
+    AOS.init({
+        duration: 800,
+        offset:150,
+    });
+
+</script>
+
+</body>
+</html>
